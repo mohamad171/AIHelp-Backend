@@ -1,0 +1,186 @@
+
+{% extends 'parent.html' %}
+
+
+{% block fname_lname %}{{ userdata.Name }}{% endblock %}
+{% block menu_fname_name %}{{ userdata.Name }}{% endblock %}
+{% block credit %} {{ userdata.Credit }} {% endblock %}
+
+{% block title %}
+    گفت و گو ها
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="x_panel">
+                    <div class="x_title">
+                        <h2>لیست گفت و گو ها
+
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+<table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">نام پشتیبان</th>
+                                                <th class="text-center">ایمیل پشتیبان</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for helper in helpers %}
+                                            <tr>
+                                                <th class="text-center">{{ helper.Name }}</th>
+                                                <td class="text-center">{{ helper.Email }}</td>
+                                                <td class="text-center">
+                                                {% if helper.isActive %}
+                                                <span class="label label-success">فعال</span>
+                                                {% else %}
+                                                    <span class="label label-danger">غیرفعال</span>
+                                                {% endif %}
+                                                </td>
+
+                                                <td class="text-center">
+                                                    <button class="btn btn-default"><i class="fa fa-edit"></i></button>
+
+                                                    <div class=" deletebtn btn btn-danger ld-ext-right" data-id="{{ helper.id }}">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    <div class="ld ld-ring ld-spin"></div>
+                                                     </div>
+
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+
+
+                    <div class="modal fade lg-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                            aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">لیست پشتیبان ها</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-md-3">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <table class="table table-striped" id="supporterstbl">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">نام پشتیبان</th>
+                                                <th class="text-center">ایمیل پشتیبان</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+ {% endblock %}
+{% block scripts %}
+    <script>
+
+$(".deletebtn").on("click",function () {
+
+if(confirm('آیا برای حذف این پشتیبان مطمئن هستید؟')){
+    $(this).addClass("running")
+    $.post("{% url 'deletehelpers' %}",{"helperid":$(this).attr("data-id")},function(data, status) {
+            jdata = JSON.parse(data)
+            if (jdata["status"] == "ok") {
+                window.location = "{% url 'helpers' %}"
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".submitbtn").removeClass("running")
+        })
+
+
+
+}
+
+})
+
+
+    $(".submitbtn").on("click",function () {
+        $('#helperfrm').parsley().validate()
+        if($('#helperfrm').parsley().isValid()){
+            $(this).addClass("running")
+        $.post("{% url 'helpers' %}",$("#helperfrm").serialize(),function(data, status) {
+            jdata = JSON.parse(data)
+            console.log(jdata)
+            if (jdata["status"] == "ok") {
+                window.location = "{% url 'helpers' %}"
+            } else if (jdata["status"] == "email") {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'این پشتیبان قبلا در سیستم ثبت شده است.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".submitbtn").removeClass("running")
+        })
+        }
+
+    })
+
+
+    </script>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,166 @@
+
+{% extends 'parent.html' %}
+{% block fname_lname %}{{ userdata.Name }}{% endblock %}
+{% block menu_fname_name %}{{ userdata.Name }}{% endblock %}
+{% block credit %} {{ userdata.Credit }} {% endblock %}
+
+{% block title %}
+    چت ها
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+<div class="x_panel" >
+                    <div class="x_title">
+                        <h2>
+                            گفت و گو ها
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" style="height: 440px;">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4" style="background-color: #34495e;height: 440px; padding: 2%;overflow: scroll;">
+
+                            {% if not chats %}
+                                <p class="text-center">گفت و گویی وجود ندارد</p>
+
+
+
+                            {% endif %}
+                            {% for chat in chats %}
+
+                                <div class="chat-contact" data-chatId="{{ chat.id }}" >
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-sm-10 col-md-10">
+                                                            {{ chat.AdditionalFields.Name }}
+                                                        </div>
+
+                                                        <div class="col-md-1 col-sm-1">
+                                                            <span class="badge bg-green"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 5%">
+                                            <div class="col-md-12">
+                                                {% if chat.lastMessage.isHelper %}
+                                                <p id="{{ chat.id }}" style="overflow: hidden"> شما: {{ chat.lastMessage.Text }}</p>
+                                                    {% else %}
+                                                <p id="{{ chat.id }}" style="overflow: hidden">{{ chat.lastMessage.Text }}</p>
+                                                {% endif %}
+                                            </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="divider"></div>
+
+                            {% endfor %}
+
+
+
+
+
+
+
+
+
+                            </div>
+                            <div class="divider-vertical"></div>
+                            <div class="col-md-8 col-sm-8" style="background-color: #f4f4f4;height: 440px; padding: 2%;">
+                                <div id="msgContent"  style="height: 370px; overflow: scroll;overflow-x: hidden;">
+
+                                {#      Messages Come Here     #}
+                                    <center>
+                                        <div class=" loading btn btn-defult ld-ext-right  " style="padding: 2%">
+
+                                                 <div class="ld ld-ring ld-spin text-center "></div>
+                                    </div>
+                                    </center>
+
+                                </div>
+
+
+
+                                <div class="row" style="padding: 1%;">
+                                     <div class="col col-md-10">
+                                         <input  type="text" placeholder="چیزی بنویسید..." id="chat_input" class="form-control" />
+                                     </div>
+                                     <div class="col col-md-2">
+                                        <button class="btn btn-default" id="send_btn">
+                                            <i class="glyphicon glyphicon-send"></i>
+                                            ارسال
+                                        </button>
+                                     </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+<div class="modal fade addmessagehelper" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                            aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">افزودن به سوال های پرکاربرد</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-md-12">
+                                            <form id="addhelpertoptojfrm" data-parsley-validate>
+                                                    <input  type="text" placeholder="پاسخ سوال را بنویسید..." name="answer" id="answer" class="form-control" data-parsley-required="true"/>
+                                            </form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class=" submitanswer btn btn-success ld-ext-right  ">
+                                                    افزودن
+                                                 <div class="ld ld-ring ld-spin"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+</div>
+
+ {% endblock %}
+{% block scripts %}
+    <script src="{% static 'gentella/build/js/socketio.js' %}"></script>
+    <script src="{% static 'gentella/build/js/chat.js' %}"></script>
+{% endblock %}

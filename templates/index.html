@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+     <meta charset="UTF-8">
+
+    <link rel="icon" href="{% static '/gentella/build/images/favicon.ico' %}" type="image/ico"/>
+    <link href="{% static '/gentella/vendors/bootstrap/dist/css/bootstrap.min.css' %}"    rel="stylesheet">
+    <link href= "{% static '/gentella/vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}"  rel="stylesheet">
+    <link href= "{% static '/gentella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href= "{% static '/gentella/landing/style.css' %}" rel="stylesheet">
+    <link href="{% static '/gentella/landing/aos.css' %}" rel="stylesheet">
+
+    <title>سرویس پشتیبانی ابری مبتنی بر هوش مصنوعی | AIHelp</title>
+</head>
+<body dir="rtl">
+
+    <div style="background: url('{% static '/gentella/landing/images/Background.png'%}');min-height: 775px;max-height: 775px;">
+
+        <nav class="navbar navbar-light bg-faded">
+            <div class="container dropdown-header">
+
+                    <a class="navbar-brand" href="#"><img src="{% static '/gentella/landing/images/logo.png'%}" width="10%" ></a>
+                    <ul class="nav navbar-nav pull-xs-right" style="margin-right: 100px;">
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="nav-link text-center" href="#">صفحه اصلی</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="nav-link text-center" href="#">مستندات</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="nav-link text-center" href="#">بلاگ</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-xs-left" style="float: left">
+                        <li class="nav-item active">
+                            <a class="landing-btn" href="http://aihelp.ir/signin#signup">ثبت نام کنید</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link text-center" style="color: white;margin-right: 10px" href="{% url 'login' %}">وارد شوید</a>
+                        </li>
+                    </ul>
+            </div>
+        </nav>
+        <div>
+            <div class="col-md-6 col-sm-6" data-aos="fade-left">
+                <img class="img-responsive d-block img-fluid" src="{% static '/gentella/landing/images/header_image.png'%}" alt="First slide">
+            </div>
+            <div class="col-md-6 col-sm-6" data-aos="fade-right">
+                <div class="container-fluid">
+                    <div class="main-landing">
+
+                        <h1  class="landing-text text-center">پشتیبانی ابری مبتنی بر هوش مصنوعی</h1>
+                        <h3 style="margin-top: 5%" class="landing-text text-center">پشتیبانی رو به ربات بسپار…</h3>
+                        <ul class="nav navbar-nav pull-xs-left" style="margin-right: 35%">
+                        <li class="nav-item active">
+                            <a class="landing-btn" href="{% url 'login' %}">بزن بریم ...</a>
+                        </li>
+
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background: url('{% static '/gentella/landing/images/Features_Background.png'%}');min-height: 375px;">
+
+        <div class="container-fluid">
+            <div class="row" data-aos="fade-down">
+                <h2 class="landing-text-black text-center">مزایای AIHelp چیست؟</h2>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4 text-block" data-aos="zoom-in-down">
+
+                    <img src="{% static '/gentella/landing/images/multi_platform.png'%} " style="margin-right: 25%"/>
+                    <h3 class="landing-text-black text-center" >چند سکویی</h3>
+                    <div class="text-center landing-text-gray">
+                        سرویس AIHelp دارای کتابخانه برای پلتفرم های موبایل  ، وب سایت ، دسکتاپ میباشد.
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 text-block" data-aos="zoom-in-down">
+                    <img src="{% static '/gentella/landing/images/support_panel.png'%}" style="margin-right: 25%"/>
+                    <h3 class="landing-text-black text-center" >پنل پشتیبانی</h3>
+                    <div class="text-center landing-text-gray">
+                        سرویس AIHelp دارای پنل پشتیبانی تحت وب میباشد که از هرجا میتوانید پاسخ کاربران خود را بدهید.
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 center-block" data-aos="zoom-in-down">
+                    <img src="{% static '/gentella/landing/images/AI_icon.png'%}" style="margin-right: 25%"/>
+                    <h3 class="landing-text-black text-center" >هوش مصنوعی</h3>
+                    <div class="text-center landing-text-gray">
+                        سرویس AIHelpبا بهره گیری از هوش مصنوعی پاسخ کاربران را سریعتر و با دقت بالاتری خواهد داد.
+                    </div>
+                    <h5></h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="background: url('{% static '/gentella/landing/images/how_work_bg.png'%}');min-height: 1600px;padding: 10px;">
+        <div class="container-fluid">
+            <div class="row" style="margin-top: 5%">
+                <div class="col-md-5 col-sm-5" data-aos="fade-right">
+                    <img class="img-responsive" src="{% static '/gentella/landing/images/use_ai.png' %}"/>
+                </div>
+                <div class="col-md-5 col-sm-5" style="float: left" data-aos="fade-left">
+                    <h3 class="landing-text-black text-center" style="margin-top: 30%">بهره گیری از هوش مصنوعی</h3>
+                    <div class="text-center landing-text-gray">
+                        سرویس AIHelp با بهره گیری از هوش مصنوعی (Machine Learning) بعد از پاسخ شما به کاربر و ذخیره آن در سوالات بعدی توسط کاربران دیگر بلافاصله پاسخ سوالات را خواهد داد.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 5%">
+                <div class="col-md-5 col-sm-5" data-aos="fade-right">
+                    <h3 class="landing-text-black text-center" style="margin-top: 30%">صرفه جویی در زمان و هزینه</h3>
+                    <div class="text-center landing-text-gray">
+                        سرویس AIHelp به شما کمک میکند تا در زمان و هزینه صرفه جویی کنید و با حداقل داده ها بیشترین بازدهی را داشته باشید که علاوه بر صرفه جویی در وقت شما ، کاربران هم سریعتر به جواب مورد نظر خواهند رسید.
+                    </div>
+
+                </div>
+                <div class="col-md-5 col-sm-5" data-aos="fade-left">
+                    <img class="img-responsive" src="{% static '/gentella/landing/images/time_cost_optimize.png' %}"/>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 5%">
+                <div class="col-md-5 col-sm-5">
+                    <img class="img-responsive" src="{% static '/gentella/landing/images/easy_use.png' %}" data-aos="fade-right"/>
+                </div>
+                <div class="col-md-5 col-sm-5" style="float: left" data-aos="fade-left">
+                    <h3 class="landing-text-black text-center" style="margin-top: 30%">سهولت در استفاده</h3>
+                    <div class="text-center landing-text-gray">
+                        استفاده از سرویس AIHelpبسیار ساده است و با استفاده از SDK این سرویس میتوانید با صرف کمترین هزینه سرویس پشتیبانی را به نرم افزار خود اضافه کنید.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+     <div style="background: url('{% static '/gentella/landing/images/recent_blog_bg.png'%}');min-height: 500px; padding: 10px">
+         <div class="container-fluid">
+             <div class="row">
+                 <h3 class="landing-text" style="margin-right: 40%;margin-top: 2%">آخرین پست های بلاگ</h3>
+             </div>
+             <div class="row">
+                 <div class="container-fluid">
+
+
+                 <div class="col-md-3 col-sm-3 landing-blog-block" data-aos="zoom-out">
+
+                        <img class="img-responsive img-rounded" src="{% static '/gentella/landing/images/easy_use.png' %}" width="200px" height="200px" style="margin-right: 15%" />
+                     <h4 class="landing-text text-center">
+                     پست نمونه
+                     </h4>
+                     <h5 class="landing-blog-text">
+                     لورم ایپسوم متنی ساختگی در صنعت چاپ و گرافیک و بی محتوا که برای نمایشم چگونگی قرار گیری المنت ها در صفحه به کار گرفته میشود با استفاده از این متن شما میتوانید چگونگی قرارگرفتن محتویات در صفحه را بررسی کنید و تصمیم لازم را بگیرید این متن ها دارای وزن مناسب ولی بی معنی میباشد پس برای استفاده از این متن ها در روزنامه یا وب سایت خود استفاده کنید.
+                     </h5>
+
+
+
+                 </div>
+                <div class="col-md-3 col-sm-3 landing-blog-block" data-aos="zoom-out">
+                    <img class="img-responsive img-rounded" src="{% static '/gentella/landing/images/easy_use.png' %}" width="200px" height="200px" style="margin-right: 15%" />
+                     <h4 class="landing-text text-center" >
+                     پست نمونه
+                     </h4>
+                     <h5 class="landing-blog-text">
+                     لورم ایپسوم متنی ساختگی در صنعت چاپ و گرافیک و بی محتوا که برای نمایشم چگونگی قرار گیری المنت ها در صفحه به کار گرفته میشود با استفاده از این متن شما میتوانید چگونگی قرارگرفتن محتویات در صفحه را بررسی کنید و تصمیم لازم را بگیرید این متن ها دارای وزن مناسب ولی بی معنی میباشد پس برای استفاده از این متن ها در روزنامه یا وب سایت خود استفاده کنید.
+                     </h5>
+                 </div>
+                <div class="col-md-3 col-sm-3 landing-blog-block" data-aos="zoom-out" >
+                        <img class="img-responsive img-rounded" src="{% static '/gentella/landing/images/easy_use.png' %}" width="200px" height="200px" style="margin-right: 15%" />
+                     <h4 class="landing-text text-center">
+                     پست نمونه
+                     </h4>
+                     <h5 class="landing-blog-text">
+                     لورم ایپسوم متنی ساختگی در صنعت چاپ و گرافیک و بی محتوا که برای نمایشم چگونگی قرار گیری المنت ها در صفحه به کار گرفته میشود با استفاده از این متن شما میتوانید چگونگی قرارگرفتن محتویات در صفحه را بررسی کنید و تصمیم لازم را بگیرید این متن ها دارای وزن مناسب ولی بی معنی میباشد پس برای استفاده از این متن ها در روزنامه یا وب سایت خود استفاده کنید.
+                     </h5>
+                 </div>
+                     </div>
+             </div>
+             <div class="row">
+
+                 <ul class="nav navbar-nav pull-xs-left" style="margin-right: 45%;margin-top: 20px">
+                        <li class="nav-item active">
+                            <a class="landing-btn" href="#">پست های بیشتر...</a>
+                        </li>
+
+                    </ul>
+             </div>
+         </div>
+
+    </div>
+    <div class="footer">
+        <ul class="nav navbar-nav pull-xs-right">
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="landing-text-black text-center" href="#">درباره ما</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="landing-text-black text-center" href="#">ارتباط با ما</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 10px">
+                            <a class="landing-text-black text-center" href="#">قوانین و مقررات</a>
+                        </li>
+
+
+                    </ul>
+            <ul class="nav navbar-nav pull-xs-right" style="float: left">
+                <li class="nav-item" style="margin-right: 10px">
+                            <a class="landing-text-black text-center" href="#">تمامی حقوق برای شرکت داده پردازان پارسیان نامی محفوظ است © ۲۰۲۰-۲۰۱۹</a>
+                        </li>
+            </ul>
+    </div>
+
+
+
+
+
+<script src= "{% static 'gentella/vendors/jquery/dist/jquery.min.js' %}" ></script>
+<script src="{% static 'gentella/vendors/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+<script src="{% static 'gentella/landing/aos.js' %}"></script>
+<script>
+
+    AOS.init();
+</script>
+</body>
+</html>

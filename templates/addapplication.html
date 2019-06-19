@@ -1,0 +1,356 @@
+
+{% extends 'parent.html' %}
+
+
+{% block fname_lname %}{{ userdata.Name }}{% endblock %}
+{% block menu_fname_name %}{{ userdata.Name }}{% endblock %}
+{% block credit %} {{ userdata.Credit }} {% endblock %}
+
+{% block title %}
+    اپلیکیشن ها
+{% endblock %}
+
+{% block content %}
+<div class="x_panel">
+                    <div class="x_title">
+                        <h2>ثبت اپلیکیشن جدید
+
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!-- start form for validation -->
+                        <form id="addappfrm" data-parsley-validate>
+                            <label for="fullname"> نام پکیج اپلیکیشن <span class="required">*</span> : </label>
+                            <input type="text" placeholder="مثل: com.test.application" pattern="^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]$" class="form-control" name="packagename" data-parsley-required="true"/>
+                            <br/>
+                            <label for="appname">نام اپلیکیشن <span class="required">*</span> :</label>
+                            <input type="text" id="appname" class="form-control" name="appname"
+                                   data-parsley-trigger="change" data-parsley-maxlength="20"  required/>
+
+
+                                <br/>
+                                 <div class=" submitbtn btn btn-primary ld-ext-right  ">
+                                    ثبت اپلیکیشن
+                                <div class="ld ld-ring ld-spin"></div>
+                                 </div>
+<br/>
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+
+
+    <div class="x_panel">
+                    <div class="x_title">
+                        <h2>لیست اپلیکیشن ها
+
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+<table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">نام اپلیکیشن</th>
+                                                <th class="text-center">نام بسته اپلیکیشن</th>
+                                                <th class="text-center">اعتبار اپلیکیشن</th>
+                                                <th class="text-center">تعداد پشتیبان ها</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for app in apps %}
+                                            <tr>
+                                                <th class="text-center">{{ app.Appname }}</th>
+                                                <td class="text-center">{{ app.PackageName }}</td>
+                                                <td class="text-center">{{ app.AppCredit }} تومان </td>
+                                                <td class="text-center">{{ app.HelpersCount }}</td>
+                                                <td class="text-center">
+
+
+
+                                                    <div class=" helpersbtn btn btn-default ld-ext-right" data-id="{{ app.AppId }}">
+                                                    <i class="fa fa-users"></i>
+                                                    <div class="ld ld-ring ld-spin"></div>
+                                                     </div>
+
+
+                                                    <div class=" addhelper btn btn-success ld-ext-right" data-toggle="modal" data-target=".addhelpermodal">
+                                                    <i class="fa fa-plus"></i>
+                                                    <div class="ld ld-ring ld-spin"></div>
+                                                    </div>
+
+
+                                                    <div class=" deletebtn btn btn-danger ld-ext-right" data-id="{{ app.AppId }}">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    <div class="ld ld-ring ld-spin"></div>
+                                                     </div>
+
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+
+                    <div class="modal fade lg-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                            aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">لیست پشتیبان ها</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-md-3">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <table class="table table-striped" id="supporterstbl">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">نام پشتیبان</th>
+                                                <th class="text-center">ایمیل پشتیبان</th>
+                                                <th class="text-center">وضعیت</th>
+                                                <th class="text-center">عملیات</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade addhelpermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                            aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">افزودن پشتیبان به پروژه</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-md-12">
+                                            <form id="addhelpertoptojfrm" action="{% url 'addhtoapp' %}" method="post" data-parsley-validate>
+                                                <select class="form-control" required="required" name="helperid">
+                                                    {% for helper in helpers %}
+                                                <option value="{{ helper.id }}">{{ helper.Name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <br/>
+                                                <div class=" submithtop btn btn-success ld-ext-right  ">
+                                                    افزودن
+                                                 <div class="ld ld-ring ld-spin"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                                    <a href="{% url 'helpers' %}" class="btn btn-primary" >ثبت پشتیبان جدید</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+ {% endblock %}
+{% block scripts %}
+    <script>
+
+    $(".submithtop").on("click",function () {
+        $('#addhelpertoptojfrm').parsley().validate()
+
+        if($('#addhelpertoptojfrm').parsley().isValid()){
+            $(this).addClass("running")
+        $.post("{% url 'addhtoapp' %}",$("#addhelpertoptojfrm").serialize(),function(data, status) {
+            jdata = JSON.parse(data)
+
+            if (jdata["status"] == "ok") {
+                window.location = "{% url 'addapplication' %}"
+            }else if(jdata["status"] == "exist") {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'این پشتیبان قبلا به اپلیکیشن اضافه شده است.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".submithtop").removeClass("running")
+        })
+        }
+
+
+})
+
+    $(".deletebtn").on("click",function () {
+
+if(confirm('آیا برای حذف این اپلیکیشن مطمئن هستید؟')){
+    $(this).addClass("running")
+    $.post("{% url 'deleteapplications' %}",{"appid":$(this).attr("data-id")},function(data, status) {
+            jdata = JSON.parse(data)
+            if (jdata["status"] == "ok") {
+                window.location = "{% url 'addapplication' %}"
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".deletebtn").removeClass("running")
+        })
+
+
+
+}
+
+})
+
+
+    $(".helpersbtn").on("click",function () {
+    $(this).addClass("running")
+
+$.post("{% url 'getapps' %}",{"appid":$(this).attr("data-id")},function(data, status) {
+            jdata = JSON.parse(data)
+            if (jdata["status"] == "ok") {
+                var table = document.getElementById("supporterstbl");
+                for(var i = 0 ; i < jdata["inhelp"].length;i++){
+                    var row = table.insertRow(i+1)
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+
+                    cell1.innerHTML = "<p class='text-center'>"+jdata["inhelp"][i]["Name"]+"</p>"
+                    cell2.innerHTML = "<p class='text-center'>"+jdata["inhelp"][i]["Email"]+"</p>"
+                    if(jdata["inhelp"][i]["isActive"])
+                        cell3.innerHTML = "<span class=' label label-success'>فعال</span>"
+                    else
+                        cell3.innerHTML = "<span class=' label label-danger'>غیرفعال</span>"
+
+
+                    cell4.innerHTML = "<button type='button' class='text-center btn btn-danger'><i class=\"glyphicon glyphicon-trash\"></i></button>"
+
+                }
+
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".helpersbtn").removeClass("running")
+        })
+
+
+        $(".lg-modal").modal()
+    })
+
+
+    $(".submitbtn").on("click",function () {
+        $('#addappfrm').parsley().validate()
+
+        if($('#addappfrm').parsley().isValid()){
+            $(this).addClass("running")
+        $.post("{% url 'addapplication' %}",$("#addappfrm").serialize(),function(data, status) {
+            jdata = JSON.parse(data)
+            console.log(jdata)
+            if (jdata["status"] == "ok") {
+                window.location = "{% url 'addapplication' %}"
+            } else if (jdata["status"] == "packagename") {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'این PackageName قبلا در سیستم ثبت شده است.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }else if (jdata["status"] == "credit") {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'موجودی حساب شما کافی نیست - حداقل موجودی مورد نیاز ۵ هزار تومان میباشد.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            else {
+                new PNotify({
+                    title: 'خطا',
+                    text: 'خطایی رخ داده است لطفا مجددا تلاش کنید.',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            }
+            $(".submitbtn").removeClass("running")
+        })
+        }
+
+
+
+    })
+
+
+    </script>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6f33fa70-8ae4-47f8-a9cb-2b74b465f431" name="AiHelp" url="http://193.176.243.39">
+        <fileTransfer host="193.176.243.39" port="22" rootFolder="/home/ubuntu/projects" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

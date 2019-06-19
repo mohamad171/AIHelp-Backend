@@ -1,0 +1,16 @@
+
+{% extends 'parent.html' %}
+
+
+{% block fname_lname %}{{ userdata.Name }}{% endblock %}
+{% block menu_fname_name %}{{ userdata.Name }}{% endblock %}
+{% block credit %} {{ userdata.Credit }} {% endblock %}
+
+{% block title %}
+    صفحه اصلی
+{% endblock %}
+
+{% block content %}
+Hello World!
+
+{% endblock %}

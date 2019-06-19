@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{% static '/gentella/build/images/favicon.ico' %}" type="image/ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ورود به پنل</title>
+
+    <link href="{% static '/gentella/vendors/bootstrap/dist/css/bootstrap.min.css' %}"    rel="stylesheet">
+    <link href= "{% static '/gentella/vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}"  rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href= "{% static '/gentella/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href= "{% static '/gentella/vendors/nprogress/nprogress.css' %}"  rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{% static 'gentella/vendors/animate.css/animate.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'gentella/build/css/custom.css' %}" rel="stylesheet">
+      <link href="{% static 'gentella/vendors/pnotify/dist/pnotify.css'%}" rel="stylesheet">
+<link href="{% static 'gentella/vendors/pnotify/dist/pnotify.buttons.css'%}" rel="stylesheet">
+<link href="{% static 'gentella/vendors/pnotify/dist/pnotify.nonblock.css'%}" rel="stylesheet">
+      <link href="{% static '/gentella/vendors/loading-btn/loading-btn.css' %}"  rel="stylesheet">
+    <link href="{% static '/gentella/vendors/loading-btn/loading.css' %}"  rel="stylesheet">
+
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+      <a class="hiddenanchor" id="reset"></a>
+        <a class="hiddenanchor" id="submitcode"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form id="loginfrm">
+              <h1>فرم ورود</h1>
+              <div>
+                <input type="email" class="form-control" name="email" placeholder="ایمیل" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" placeholder="رمز عبور" required="" />
+              </div>
+                <div class="loginbtn btn btn-default ld-ext-right ">
+                ورود
+                 <div class="ld ld-ring ld-spin"></div>
+                </div>
+
+
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">جدید در سایت؟
+                  <a href="#signup" class="to_register"> ایجاد حساب </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> AIHelp </h1>
+                  <p>تمامی حقوق برای AIHelp محفوظ میباشد.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form id="registerfrm">
+              <h1>ایجاد حساب</h1>
+                <div>
+                <input type="text" class="form-control" name="fname" id="rfname" placeholder="نام" required="" />
+              </div>
+                <div>
+                <input type="text" class="form-control" name="lname" id="rlname" placeholder="نام خانوادگی" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" name="email" id="remail" placeholder="ایمیل" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" id="rpassword" placeholder="رمز عبور" required="" />
+              </div>
+
+
+                <div class=" registerbtn btn btn-default ld-ext-right ">
+                ثبت نام
+                 <div class="ld ld-ring ld-spin"></div>
+                </div>
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">آیا حساب کاربری دارید؟
+                  <a href="#signin" class="to_register"> ورود </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> AIHelp </h1>
+                  <p>تمامی حقوق برای AIHelp محفوظ میباشد.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+        <div id="rest_pass" class="animate form rest_pass_form">
+          <section class="login_content">
+            <!-- /password recovery -->
+            <form id="submitcodefrm">
+              <h1>تایید هویت</h1>
+              <div class="form-group has-feedback">
+                <input type="number" class="form-control" name="code" placeholder="کد 6 رقمی را وارد کنید" />
+                <div class="form-control-feedback">
+
+                </div>
+              </div>
+
+                <div class=" submitcodebtn btn btn-default ld-ext-right ">
+                بررسی کد
+                 <div class="ld ld-ring ld-spin"></div>
+                </div>
+
+                <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">جدید در سایت؟
+                  <a href="#signup" class="to_register"> ایجاد حساب </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> AIHelp </h1>
+                  <p>تمامی حقوق برای AIHelp محفوظ میباشد.</p>
+                </div>
+              </div>
+            </form>
+            <!-- Password recovery -->
+          </section>
+        </div>
+
+
+
+      </div>
+    </div>
+  <script src="{% static 'gentella/vendors/jquery/dist/jquery.min.js'%}"></script>
+    <script src="{% static 'gentella/vendors/pnotify/dist/pnotify.js'%}"></script>
+<script src="{% static 'gentella/vendors/pnotify/dist/pnotify.buttons.js'%}"></script>
+<script src="{% static 'gentella/vendors/pnotify/dist/pnotify.nonblock.js'%}"></script>
+
+    <script>
+
+
+
+    $(".loginbtn").on("click",function () {
+
+            $(this).addClass("running")
+            $.post("{% url 'login' %}",$("#loginfrm").serialize(),function(data, status){
+                jdata = JSON.parse(data)
+
+            if(jdata["status"] == "ok"){
+                window.location = "{% url 'main' %}"
+            }else if(jdata["status"] == "password"){
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'رمز عبور وارد شده صحیح نمیباشد.',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+            else if(jdata["status"] == "notexist"){
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'کاربری با این آدرس ایمیل موجود نمیباشد.',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+            else{
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'خطایی رخ داده لطفا مجددا تلاش کنید',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+
+            $(".loginbtn").removeClass("running")
+            })
+
+     })
+
+        $(".registerbtn").on("click",function () {
+            $(this).addClass("running")
+            $.post("{% url 'register' %}",$("#registerfrm").serialize(),function(data, status){
+                jdata = JSON.parse(data)
+
+            if(jdata["status"] == "ok"){
+                new PNotify({
+                                  title: 'هورا!',
+                                  text: 'ثبت نام انجام شد،برای تکمیل ثبت نام ایمیل خود را بررسی کنید.',
+                                  type: 'success',
+                                  styling: 'bootstrap3'
+                              });
+                window.location = "{% url 'login' %}#reset"
+            }else if(jdata["status"] == "email"){
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'ایمیل وارد شده قبلا ثبت شده است',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+            else{
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'خطایی رخ داده لطفا مجددا تلاش کنید',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+                $(".registerbtn").removeClass("running")
+            })
+
+        })
+        $(".submitcodebtn").on("click",function () {
+            $(this).addClass("running")
+            $.post("{% url 'submitcode' %}",$("#submitcodefrm").serialize(),function(data, status){
+                jdata = JSON.parse(data)
+
+            if(jdata["status"] == "ok"){
+                window.location = "{% url 'main' %}"
+            }else if(jdata["status"] == "code"){
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'کد وارد شده صحیح نمیباشد.',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+            else{
+                new PNotify({
+                                  title: 'خطا',
+                                  text: 'خطایی رخ داده لطفا مجددا تلاش کنید',
+                                  type: 'error',
+                                  styling: 'bootstrap3'
+                              });
+            }
+                $(".submitcodebtn").removeClass("running")
+            })
+
+        })
+
+    </script>
+
+  </body>
+</html>

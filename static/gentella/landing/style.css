@@ -1,0 +1,89 @@
+@font-face {
+font-family: "IranSans";
+src: url("iransans.ttf");
+}
+@media (min-width: 768px ) {
+    .main-landing{
+        margin-top: 40%;
+    }
+    .landing-blog-block{
+        margin-right:70px;
+    }
+}
+ul.nav .nav-link{
+    min-width: 105px;
+    font-family: 'IranSans', Arial, sans-serif;
+    border-radius: 100px;
+    font-size: 16px;
+    color:white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.landing-blog-block{
+cursor: pointer;
+padding: 10px;
+background: rgba(255,255,255,0.30);
+border-radius: 5px;
+min-height: 350px;
+max-height: 350px;
+/*margin-right: 70px;*/
+overflow:hidden;
+display:inline-block;
+text-overflow: ellipsis;
+
+
+}
+.landing-blog-text{
+
+font-family: "IranSans";
+font-size: 15px;
+color: #FFFFFF;
+letter-spacing: 0;
+text-align: center;
+line-height: 24px;
+    text-overflow: ellipsis;
+
+}
+.landing-text-gray{
+opacity: 0.7;
+font-family: "IranSans";
+font-size: 18px;
+color: #272727;
+letter-spacing: 0;
+text-align: center;
+line-height: 24px;
+}
+.landing-text{
+    font-family: 'IranSans', Arial, sans-serif;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.landing-text-black{
+
+    font-family: 'IranSans', Arial, sans-serif;
+    color: black;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+
+ul.nav .nav-link:hover{
+
+min-width: 105px;
+background: rgba(255,255,255,0.21);
+border-radius: 100px;
+
+}
+.landing-btn{
+font-family: 'IranSans', Arial, sans-serif;
+font-size: 16px;
+text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+color: white;
+text-align: center;
+min-width: 165px;
+background-image: linear-gradient(-90deg, #21BCA9 0%, #227671 100%);
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+border-radius: 100px;
+}
+
+.landing-btn:hover{
+    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.50);
+    color: white;
+}
