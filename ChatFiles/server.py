@@ -5,11 +5,16 @@ import json
 import DBModel
 import time
 
+from datetime import datetime
+from difflib import SequenceMatcher
+
+
 sio = socketio.Server(async_mode='eventlet')
 app = socketio.Middleware(sio)
 eventlet.monkey_patch()
 
 connected = []
+
 
 privatekey = None
 publickey = None
@@ -32,30 +37,66 @@ def my_custom_event(sid,message):
 def my_custom_event(sid, data):
 
     chats = DBModel.Messages.objects(ChatId=data["chatId"])
-    print(chats)
     arr = []
     for chat in chats:
         r_data = {
             "Text":chat.Text,
             "isHelper":chat.isHelper,
+            "AddDate": str(chat.AddDate.strftime("%H:%M"))
         }
         arr.append(r_data)
-    print(arr)
     return arr
 
 
 @sio.on('message')
 def my_custom_event(sid, data):
-    print("Config")
     encrypted = str_xor(data["message"],"Mohamad_171_FA_09382138446")
 
     decrypted = str_xor(encrypted,"Mohamad_171_FA_09382138446")
+    mesages = DBModel.Messages.objects()
 
+    chat = DBModel.Chats.objects.get(id=data["ChatId"])
+    message = DBModel.Messages()
+    message.ChatId = chat
+    message.isHelper = data["isHelper"]
+    message.MessageType = data["type"]
+    message.isAI = False
+    message.Text = data["message"]
+    message.AddDate = datetime.now()
+    message.save()
     data["sid"] = sid
-    sio.emit("client_message",data)
+    data["addDate"] = datetime.now().strftime("%H:%M")
+    sio.emit("client_message", data)
+
+    if data["isHelper"] != True:
+        best = ""
+        helpers = DBModel.MessageHelper.objects()
+        for message in helpers:
+            if similar(message.Question,data["message"]) >= 0.7:
+                best = message.Answer
+        if best != "":
+            chat = DBModel.Chats.objects.get(id=data["ChatId"])
+            message = DBModel.Messages()
+            message.ChatId = chat
+            message.isHelper = True
+            message.MessageType = data["type"]
+            message.isAI = True
+            message.Text = best
+            message.AddDate = datetime.now()
+            message.save()
+
+            data["message"] = best
+            data["isHelper"] = True
+            data["sid"] = sid
+            data["addDate"] = datetime.now().strftime("%H:%M")
+            sio.emit("client_message", data)
+
 
 def str_xor(s1, s2):
  return "".join([chr(ord(c1) ^ ord(c2)) for (c1,c2) in zip(s1,s2)])
+
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
 
 if __name__ == "__main__":
 

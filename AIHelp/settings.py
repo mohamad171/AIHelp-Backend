@@ -11,7 +11,7 @@ SECRET_KEY = 'y=tez(k26k!=1dv2fwjn4eaadr6u10$8k-j90m!^tl7k7x7$(c'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["www.aihelp.ir","aihelp.ir","localhost"]
+ALLOWED_HOSTS = ["www.aihelp.ir","aihelp.ir","localhost","*"]
 
 
 

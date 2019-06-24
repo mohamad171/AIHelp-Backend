@@ -1,6 +1,6 @@
 
 
-var socket = io('http://127.0.0.1:4000');
+var socket = io('http://192.168.1.105:4000');
     socket.on('connect', function(){
 	new PNotify({
                     title: 'اتصال موفق',
@@ -59,7 +59,7 @@ socket.on("client_message",function(data){
 $("#send_btn").click(function() {
 	var input_val = $("#chat_input").val()
 	  if ($.trim(input_val).length>0){
-	  	socket.emit("message",{"message":input_val,"ChatId":chatId,"type":"TEXT","isHelper":true})
+	  	socket.emit("message",{"message":input_val,"ChatId":chatId,"type":"TEXT","isHelper":false})
 
 
 	  	// newSelfMessage( input_val );
@@ -155,7 +155,7 @@ $(window).on('keydown', function(e) {
   if (e.which == 13) {
   	var input_val = $("#chat_input").val()
 	  if ($.trim(input_val).length>0){
-	  	socket.emit("message",{"message":input_val,"ChatId":chatId,"type":"TEXT","isHelper":true})
+	  	socket.emit("message",{"message":input_val,"ChatId":chatId,"type":"TEXT","isHelper":false})
           document.getElementById(chatId).innerText = "شما: "+input_val
 	  }
 
